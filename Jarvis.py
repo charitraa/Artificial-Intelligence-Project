@@ -1,15 +1,16 @@
-import pyttsx3 
-import speech_recognition as sr 
+import pyttsx3
+import speech_recognition as sr
 import datetime
-import wikipedia 
+import wikipedia
 import webbrowser
 import os
 import smtplib
 
+newVoiceRate = 160
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-# print(voices[1].id)
-engine.setProperty('voice', voices[0].id)
+engine.setProperty('voice', voices[1].id)
+engine.setProperty('rate', newVoiceRate)
 
 
 def speak(audio):
@@ -19,34 +20,37 @@ def speak(audio):
 
 def wishMe():
     hour = int(datetime.datetime.now().hour)
-    if hour>=0 and hour<12:
+    if hour >= 0 and hour < 12:
         speak("Good Morning!")
 
-    elif hour>=12 and hour<18:
-        speak("Good Afternoon!")   
+    elif hour >= 12 and hour < 18:
+        speak("Good Afternoon!")
 
     else:
-        speak("Good Evening!")  
+        speak("Good Evening!")
 
-    speak("I am jarvis . Please tell me how may I help you")       
+    speak("I am friday Sir. Please tell me how may I help you")
+
 
 def takeCommand():
+
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        print("Listening...")
+        print("i am Listening sir ...")
         r.pause_threshold = 1
         audio = r.listen(source)
 
     try:
-        print("Recognizing...")    
+        print("Recognizing...")
         query = r.recognize_google(audio, language='en-in')
-        print("User said: {query}\n")
+        print(f"User said: {query}\n")
 
     except Exception as e:
-        # print(e)    
-        print("Say that again please...")  
+        print(e)
+        print("Say that again please...")
         return "None"
     return query
+
 
 def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -56,12 +60,13 @@ def sendEmail(to, content):
     server.sendmail('youremail@gmail.com', to, content)
     server.close()
 
+
 if __name__ == "__main__":
     wishMe()
     while True:
-        query = takeCommand().lower()
 
-        
+        query = takeCommand().lower()  # type: ignore
+
         if 'wikipedia' in query:
             speak('Searching Wikipedia...')
             query = query.replace("wikipedia", "")
@@ -77,30 +82,29 @@ if __name__ == "__main__":
             webbrowser.open("google.com")
 
         elif 'open stackoverflow' in query:
-            webbrowser.open("stackoverflow.com")   
-
+            webbrowser.open("stackoverflow.com")
 
         elif 'play music' in query:
             music_dir = 'D:\\Non Critical\\songs\\Favorite Songs2'
             songs = os.listdir(music_dir)
-            print(songs)    
+            print(songs)
             os.startfile(os.path.join(music_dir, songs[0]))
 
-        elif 'the time' in query:
-            strTime = datetime.datetime.now().strftime("%H:%M:%S")    
+        elif 'time' in query:
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Sir, the time is {strTime}")
 
         elif 'open code' in query:
-            codePath = "C:\\Users\\Haris\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            codePath = "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
             os.startfile(codePath)
 
         elif 'email to harry' in query:
             try:
                 speak("What should I say?")
                 content = takeCommand()
-                to = "harryyourEmail@gmail.com"    
+                to = "harryyourEmail@gmail.com"
                 sendEmail(to, content)
                 speak("Email has been sent!")
             except Exception as e:
                 print(e)
-                speak("Sorry my friend rabi bhai. I am not able to send this email")    
+                speak("Sorry my friend harry chai. I am not able to send this email")
