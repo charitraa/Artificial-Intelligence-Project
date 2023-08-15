@@ -5,13 +5,13 @@ import wikipedia
 import webbrowser
 import os
 import smtplib
-from selenium import webdriver
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.chrome.options import Options
-from time import sleep
+# from selenium import webdriver
+# from selenium.webdriver.support.ui import Select
+# from selenium.webdriver.chrome.options import Options
+# from time import sleep
 
-chrome_options = Options()
-chrome_options.add_argument('--log-level=3')
+# chrome_options = Options()
+# chrome_options.add_argument('--log-level=3')
 
 
 def speak(audio):
@@ -94,7 +94,7 @@ if __name__ == "__main__":
             os.startfile(os.path.join(music_dir, songs[0]))
 
         elif 'time' in query:
-            strTime = datetime.datetime.now().strftime("%H:%M:%S")
+            strTime = datetime.datetime.now().strftime("%I:%M:%S")
             speak(f"Sir, the time is {strTime}")
 
         elif 'open code' in query:
