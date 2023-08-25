@@ -5,6 +5,7 @@ import wikipedia
 import webbrowser
 import os
 import smtplib
+from playsound import playsound
 # from selenium import webdriver
 # from selenium.webdriver.support.ui import Select
 # from selenium.webdriver.chrome.options import Options
@@ -88,10 +89,11 @@ if __name__ == "__main__":
             webbrowser.open("stackoverflow.com")
 
         elif 'play music' in query:
-            music_dir = 'C:\\Users\\Lenovo\\Downloads\\alarm.wav'
-            songs = os.listdir(music_dir)
-            print(songs)
-            os.startfile(os.path.join(music_dir, songs[0]))
+            playsound('C:\\Users\\Lenovo\\Downloads\\alarm.wav')
+            # music_dir = 'C:\\Users\\Lenovo\\Downloads\\alarm.wav'
+            # songs = os.listdir(music_dir)
+            # print(songs)
+            # os.startfile(os.path.join(music_dir, songs[0]))
 
         elif 'time' in query:
             strTime = datetime.datetime.now().strftime("%I:%M:%S")
