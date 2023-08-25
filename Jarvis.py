@@ -48,7 +48,8 @@ def takeCommand():
     try:
         print("Recognizing...")
         query = r.recognize_google(audio, language='en-in')
-        print(f"User said: {query}\n")
+        print(f"{query}\n")
+        S
 
     except Exception as e:
         print(e)
@@ -72,6 +73,7 @@ if __name__ == "__main__":
         query = str(takeCommand()).lower()
 
         if 'wikipedia' in query:
+            speak("ok Sir")
             speak('Searching Wikipedia...')
             query = query.replace("wikipedia", "")
             results = wikipedia.summary(query, sentences=2)
@@ -80,9 +82,11 @@ if __name__ == "__main__":
             speak(results)
 
         elif 'open youtube' in query:
+            speak("ok sir,opening youtube for you")
             webbrowser.open("youtube.com")
 
         elif 'open google' in query:
+            speak("ok sir,opening google for you")
             webbrowser.open("google.com")
 
         elif 'open stackoverflow' in query:
@@ -96,6 +100,7 @@ if __name__ == "__main__":
             # os.startfile(os.path.join(music_dir, songs[0]))
 
         elif 'time' in query:
+            speak("ok Sir")
             strTime = datetime.datetime.now().strftime("%I:%M:%S")
             speak(f"Sir, the time is {strTime}")
 
@@ -118,4 +123,6 @@ if __name__ == "__main__":
             os.system("shutdown /s /t 1")
 
         elif 'restart' in query:
+            speak("ok Sir")
+            speak("Computer is restarting..")
             os.system("shutdown /r /t 1")
