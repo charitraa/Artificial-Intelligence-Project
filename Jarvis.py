@@ -11,8 +11,7 @@ from playsound import playsound
 # from selenium.webdriver.chrome.options import Options
 # from time import sleep
 
-# chrome_options = Options()
-# chrome_options.add_argument('--log-level=3')
+
 
 
 def speak(audio):
