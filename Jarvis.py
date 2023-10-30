@@ -136,3 +136,4 @@ while True:
                 os.system("shutdown /r /t 1")
     else:
         speak("have a nice day sir ")
+        
