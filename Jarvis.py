@@ -6,10 +6,7 @@ import webbrowser
 import os
 import smtplib
 from playsound import playsound
-# from selenium import webdriver
-# from selenium.webdriver.support.ui import Select
-# from selenium.webdriver.chrome.options import Options
-# from time import sleep
+
 
 
 
