@@ -71,15 +71,11 @@ We welcome contributions! If you have any improvements or new features to add, p
     ```
 6. Create a pull request.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgements
 
 Thank you for checking out this repository. We hope Friday assists you well and provides a great learning experience.
 
 ## Contact
 
-If you have any questions, feel free to open an issue or contact me at [your-email@example.com].
+If you have any questions, feel free to open an issue or contact me at [stharabi9862187405@gmail.com].
 
